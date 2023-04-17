@@ -1,0 +1,68 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-3"></div>
+
+    <div class="col-md-6">
+      <div class="card p-5 shadow-effect bg-seconda">
+        <div class="card-body">
+          <div class="text-center">
+            <h3 class="text-theme-primary">Login</h3>
+            <p>Lorem ipsum dolor sit amet consectetur.</p>
+          </div>
+          <form #lognForm="ngForm" (ngSubmit)="onSubmit(lognForm.value)">
+            <div class="form-group">
+              <input
+                type="email"
+                class="form-control"
+                placeholder="Email"
+                name="email"
+                #Email="ngModel"
+                ngModel
+                required
+                [ngClass]="{ 'is-invalid': Email.touched && Email.invalid }"
+              />
+              <div
+                class="alert alert-danger"
+                *ngIf="Email.touched && Email.invalid"
+              >
+                <div *ngIf="Email.errors?.['required']">
+                  Email can not Be empty
+                </div>
+                <div *ngIf="Email.errors?.['email']">Please a valid Email</div>
+              </div>
+            </div>
+            <div class="form-group">
+              <input
+                type="password"
+                class="form-control"
+                placeholder="password"
+                name="password"
+                #Password="ngModel"
+                ngModel
+                required
+                [ngClass]="{
+                  'is-invalid': Password.touched && Password.invalid
+                }"
+              />
+              <div
+                class="alert alert-danger"
+                *ngIf="Password.touched && Password.invalid"
+              >
+                Password can not Be empty
+              </div>
+            </div>
+            <div>
+              <button
+                class="btn btn-info btn-block btn-theme form-control mt-2"
+                [disabled]="lognForm.invalid"
+              >
+                Login
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-3"></div>
+  </div>
+</div>

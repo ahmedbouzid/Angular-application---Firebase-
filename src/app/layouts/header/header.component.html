@@ -1,0 +1,14 @@
+<header class="navbar navbar-expand-lg fixed-top bg-white">
+  <div class="container justify-content-center">
+    <a id="Titi"> My App</a>
+  </div>
+  <div class="container justify-content-center" *ngIf="loggedIn$ | async">
+    <a id=""> {{ email }}</a>
+    <button
+      (click)="logout()"
+      class="btn btn-sm btn-info bg-seconda text-theme-primary"
+    >
+      Logout
+    </button>
+  </div>
+</header>

@@ -1,0 +1,12 @@
+.card{
+   height: 200px; 
+   cursor: pointer;
+}
+.icon{
+    height: 80px;
+    width: 40px;
+}
+.card-body {
+    background-color: rgb(234, 241, 222);
+
+}

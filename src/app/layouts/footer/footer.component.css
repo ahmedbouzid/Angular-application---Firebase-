@@ -1,0 +1,25 @@
+footer {
+    height: 130px;
+    padding: 15px;
+    background-color: var(--navbar-footer-color);
+}
+#titi{
+    padding: 5px 20px ;
+    border-radius: 20px;
+    background-color:var(--secondary-color) ;
+    color:var(--primary-color) ;
+    font-size: 1.2em;
+}
+nav {
+    margin-top: 100px;
+    height: 50px;
+    background-color: var(--navbar-footer-color);
+}
+.nav-link{
+    text-transform: uppercase;
+    color: var(--primary-color);
+    font-weight: 700;
+}
+.nav-link {
+    color: var(--primary-color);
+}

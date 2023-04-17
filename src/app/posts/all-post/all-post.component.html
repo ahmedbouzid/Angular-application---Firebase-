@@ -1,0 +1,89 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="card shadow-effect bg-seconda">
+        <div class="card-body text-center">
+          <h2>All block Posts</h2>
+          <div class="text-theme-center">
+            <p>Lorem ipsum dolor sit amet consectetur.</p>
+            <button class="btn btn-info bg-theme" routerLink="/posts/new">
+              Add new Post
+            </button>
+            <button class="btn btn-warning ml-2" routerLink="/">
+              Back to Dashboard
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row mt-5">
+    <div class="col-md-12">
+      <div class="card shadow-effect">
+        <div class="card-body">
+          <div class="table-responsive">
+            <table class="table row-border hover">
+              <thead>
+                <tr>
+                  <th>Num</th>
+                  <th>Post Imag</th>
+                  <th>Title</th>
+                  <th>Excerpt</th>
+                  <th>Categore</th>
+                  <th>Date</th>
+                  <th>Action</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let post of postArray; let i = index">
+                  <td>{{ i + 1 }}</td>
+                  <td>
+                    <img src="{{ post.data.postImgPath }}" alt="" />
+                  </td>
+                  <td>{{ post.data.title }}</td>
+                  <td width="10">{{ post.data.excerpt }}</td>
+                  <td>{{ post.data.categorie.categorie }}</td>
+                  <td>{{ post.data.cratedAt.toMillis() | date }}</td>
+                  <td>
+                    <!-- lorsque il n'existe pas une relation entre les components on utilise la querry param pour la MAJ -->
+                    <div class="d-flex">
+                      <button
+                        class="btn btn-sm btn-warning"
+                        routerLink="/posts/new"
+                        [queryParams]="{ id: post.id }"
+                      >
+                        Edit
+                      </button>
+                      <button
+                        class="btn btn-sm btn-danger ml-2"
+                        routerLink="/posts"
+                        (click)="onDelete(post.data.postImgPath, post.id)"
+                      >
+                        Delete
+                      </button>
+                      <button
+                        class="btn btn-sm btn-success ml-2"
+                        *ngIf="!post.data.isFeatured"
+                        (click)="onFeatured(post.id, true)"
+                      >
+                        Feature
+                      </button>
+                      <button
+                        class="btn btn-info btn-sm"
+                        *ngIf="post.data.isFeatured"
+                        (click)="onFeatured(post.id, false)"
+                      >
+                        Remove feature
+                      </button>
+                    </div>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

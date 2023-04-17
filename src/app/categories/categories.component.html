@@ -1,0 +1,93 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-12 bg p-5 shadow-effect">
+      <h3 class="text-center text-theme-primary">
+        {{ formStatus }} Categories
+      </h3>
+      <p class="text-center mb-5">
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Assumenda sequi
+        soluta rem impedit laboriosam, vitae, in asperiores facere veniam quae,
+      </p>
+      <!-- Simple Form with  template ng form -->
+      <form
+        class="form-inline text-center"
+        #categorieForm="ngForm"
+        (ngSubmit)="onSubmit(categorieForm)"
+      >
+        <div class="form-group col-md-10">
+          <input
+            type="text"
+            class="form-control shadow-effect"
+            placeholder="Add new Categirie"
+            [(ngModel)]="formCategorie"
+            name="categorie"
+            #newCategorie="ngModel"
+            required
+            [ngClass]="{
+              'is-invalid': newCategorie.touched && newCategorie.invalid
+            }"
+          />
+          <!-- Afficher un alert lorsque le champ et vide  -->
+          <div
+            class="alert alert-danger"
+            *ngIf="
+              newCategorie.touched &&
+              newCategorie.invalid &&
+              !newCategorie.value
+            "
+          >
+            categorie field is required
+          </div>
+        </div>
+        <div class="col-md-2">
+          <!-- Disabled le boutton lorsque le categorie est vide  -->
+          <button
+            class="btn btn-block btn-info mb-2 btn-theme"
+            [disabled]="categorieForm.invalid"
+          >
+            {{ formStatus }} categorie
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+  <div class="row mt-5 mb-5">
+    <div class="col-md-3"></div>
+    <div class="col-md-6">
+      <div class="card shadow-effect">
+        <div class="card-body">
+          <table class="table row-border hover">
+            <thead>
+              <tr>
+                <td>NUM</td>
+                <td>Categorie</td>
+                <td>Action</td>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let categorie of catArray; let i = index">
+                <td>{{ i + 1 }}</td>
+                <td>{{ categorie.data.categorie }}</td>
+                <td class="d-flex">
+                  <button
+                    class="btn btn-warning"
+                    (click)="onEdit(categorie.data.categorie, categorie.id)"
+                  >
+                    Edit
+                  </button>
+                  <button
+                    class="btn btn-danger ml-2"
+                    (click)="onDelete(categorie.id)"
+                  >
+                    Delete
+                  </button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-3"></div>
+  </div>
+</div>

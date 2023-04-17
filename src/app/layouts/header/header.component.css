@@ -1,0 +1,12 @@
+header {
+    height: 100px;
+}
+#Titi{
+    font-size: 30px;
+    font-weight: bold;
+    padding: 5px  20px;
+    background-color: var(--secondary-color);
+    color: var(--primary-color);
+    border-radius: 30%;
+
+}
